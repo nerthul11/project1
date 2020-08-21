@@ -1,0 +1,6 @@
+{% extends "layout.html" %}
+{% block body %}
+	<img src=https://vignette.wikia.nocookie.net/avatar/images/4/4c/Wan_Shi_Tong.png width=30%, height=30%, class="center">
+	<p>Bienvenidos a Project 1! Este sitio experimental simplemente cumple la función de buscar libros, los datos en formato JSON de dichos libros en Goodreads y te permite, en caso de haber iniciado sesión, agregar o editar tus propias reseñas en el sitio.</p>
+	<div class="center"><a href="{{ url_for('books') }}">Listado de libros</a></div>
+{% endblock %}

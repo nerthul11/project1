@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<h2>Datos del libro</h2>
+		<ul>
+			<li>ISBN: <span class="imp">{{ book.isbn }}</span></li>
+			<li>Título: <span class="imp">{{ book.title }}</span></li>
+			<li>Autor: <span class="imp">{{ book.author }}</span></li>
+			<li>Año de publicación: <span class="imp">{{ book.year}}</span></li>
+		</ul>
+	<h2>Reseñas de Goodreads</h2>
+		<ul>
+			<li>Valoraciones realizadas: <span class="imp">{{ rates }}</span></li>
+			<li>Valoración promedio: <span class="imp">{{ avg }} / 5</span></li>
+		</ul>
+	{% if reviews %}
+	<h2>Reseñas de Project 1</h2>
+		{% for review in reviews %}
+		<div>
+			<span class="imp"><a href="{{ url_for('profile', username=review.poster) }}">{{ review.poster }}</a> ({{ review.userscore }} / 5)</span>
+			<p>{{ review.content }}</p>
+		</div>
+		{% endfor %}
+	{% endif %}
+	{% if current_user %}
+		{% if review_check %}
+			<h2>Agregar reseña y valoración</h2>
+			<h5>Aquí puede dejar sus opiniones y recomendaciones del libro. Por favor recordar el correcto uso de SPOILER ALERT en caso de ser necesario.</h5>
+			<form action="{{ url_for('review', book_isbn=book.isbn) }}" method="post">
+				<textarea name="r" rows=10 cols=50></textarea>
+				<div>
+					<input type="radio" name="s" id="star1" value="1"><label for="star1">*</label>
+					<input type="radio" name="s" id="star2" value="2"><label for="star2">**</label>
+					<input type="radio" name="s" id="star3" value="3"><label for="star3">***</label>
+					<input type="radio" name="s" id="star4" value="4"><label for="star4">****</label>
+					<input type="radio" name="s" id="star5" value="5"><label for="star5">*****</label>
+				</div>
+				<button>Añadir reseña</button>
+			</form>
+		{% else %}
+			<h2>Editar reseña y valoración</h2>
+			<form action="{{ url_for('review', book_isbn=book.isbn) }}" method="post">
+				<textarea name="r" rows=10 cols=50>{{ review_check }}</textarea>
+				<div>
+					<input type="radio" name="s" id="star1" value="1"><label for="star1">*</label>
+					<input type="radio" name="s" id="star2" value="2"><label for="star2">**</label>
+					<input type="radio" name="s" id="star3" value="3"><label for="star3">***</label>
+					<input type="radio" name="s" id="star4" value="4"><label for="star4">****</label>
+					<input type="radio" name="s" id="star5" value="5"><label for="star5">*****</label>
+				</div>
+				<button>Editar reseña</button>
+			</form>
+		{% endif %}
+	{% endif %}
+	<div class="center"><a href="{{ url_for('bookapi', book_isbn=book.isbn) }}">Ver API de este libro</a></div>
+	<div class="center"><a href="{{ url_for('books') }}">Volver al listado de libros</a></div>
+{% endblock %}

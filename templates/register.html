@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<form action="{{ url_for('register') }}" method="post">
+		<div>Registrarse en el sitio le permitirá acceder a ciertas funciones.</div>
+			<div><input type="text" placeholder="Usuario" name="u"></div>
+			<div><input type="password" placeholder="Contraseña" name="p"></div>
+			<div><input type="text" placeholder="E-mail" name="e"></div>
+		<button>Registrar</button>
+	</form>
+	<div>{{ text }}</div>
+	<div><a href="{{ url_for('books') }}">Buscar libros</a></div>
+	<div><a href="{{ url_for('index') }}">Volver a inicio</a></div>
+{% endblock %}

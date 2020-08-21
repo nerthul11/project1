@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	<div>{{ text }}</div>
+	<div><a href="{{ url_for('index') }}">Volver a inicio</a></div>
+	<div><a href="{{ url_for('login') }}">Iniciar sesión</a></div>
+{% endblock %}

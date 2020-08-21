@@ -1,0 +1,7 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	{{ text }}
+	<a href="{{ url_for('books') }}">Buscar libros</a>
+	<a href="{{ url_for('index') }}">Volver a inicio</a>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		{% block heading %}{% endblock %}
+		<title>Project1</title>
+		<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	</head>
+	<body>
+		{% if current_user %}
+		<div class="right"><a href="{{ url_for('profile', username=current_user) }}">{{ current_user }}</a></div>
+		<div class="right"><a href="{{ url_for('logout') }}">Cerrar sesión</a></div>
+		{% else %}
+		<div class="right"><a href="{{ url_for('register') }}">Crear una cuenta</a></div>	
+		<div class="right"><a href="{{ url_for('login') }}">Iniciar sesión</a></div>
+		{% endif %}
+		<h1>PROJECT 1</h1>
+		{% block body %}{% endblock %}
+	</body>
+</html>

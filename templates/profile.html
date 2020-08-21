@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	{% if user %}
+		<h2>Datos del usuario</h2>
+		<table>
+			<tr>
+				<th>Usuario</th>
+				<th>Valoraciones realizadas</th>
+				<th>Puntuación promedio</th>
+			</tr>
+			<tr>
+				<td>{{ user }}</td>
+				<td>{{ reviews }}</td>
+				<td>{{ score }}</td>
+			</tr>
+		</table>
+		{% if current_user == user %}
+		<h2>Modificar datos de la cuenta</h2>
+		<h5><a href="{{ url_for('infochange', username=user, field='passchange') }}" method="POST">Modificar contraseña</a></h5>
+		<h5><a href="{{ url_for('infochange', username=user, field='mailchange') }}" method="POST">Modificar correo</a></h5>
+		{% endif %}		
+	{% else %}
+		{{ text }}
+	{% endif %}	
+	<a href="{{ url_for('index') }}">Volver a inicio</a>
+{% endblock %}

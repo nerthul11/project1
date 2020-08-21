@@ -1,0 +1,40 @@
+body {
+	background-color: #eeeeee
+}
+
+.center {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+h1 {
+	color: #0836f7;
+	text-align: center;
+	background-color: #ffaa00;
+	font-family: Comic Sans, sans-serif;
+	font-size: 88px;
+	font-weight: bold;
+	border: 3px solid blue;
+}
+
+.imp {
+	color: #0836f7;
+	font-weight: bold;
+}
+
+.right {
+	text-align: right;
+}
+
+table {
+	border: 2px solid black;
+	border-collapse: collapse;
+	width: 50%;
+}
+
+th, td {
+	border: 1px solid black;
+	padding: 5px;
+}

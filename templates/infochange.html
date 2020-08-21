@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block body %}
+	<h2>Por favor complete los campos para modificar los datos de su cuenta:</h2>
+	{% if field == 'passchange' %}
+	<form action="{{ url_for('infochange', username=username, field='passchange') }}" method="post">
+		<div><input type="password" placeholder="Contraseña actual" name="o"></div>
+		<div><input type="password" placeholder="Contraseña nueva" name="n"></div>
+		<div><input type="password" placeholder="Confirmar contraseña" name="c"></div>				
+		<button>Modificar</button>
+	</form>
+	{% endif %}
+	{% if field == 'mailchange' %}
+	<form action="{{ url_for('infochange', username=username, field='mailchange') }}" method="post">	
+		<div><input type="text" placeholder="Mail actual" name="o"></div>
+		<div><input type="text" placeholder="Mail nuevo" name="n"></div>
+		<div><input type="text" placeholder="Confirmar mail" name="c"></div>			
+		<button>Modificar</button>
+	</form>
+	{% endif %}
+	{{ text }}
+	<div><a href="{{ url_for('profile', username=username) }}">Volver al perfil</a></div>
+	<div><a href="{{ url_for('index') }}">Volver a inicio</a></div>
+{% endblock %}

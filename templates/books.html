@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body %}
+	{% if l > 0 %}
+		{% if l == t %}
+			<h2>Esta es una lista con todos los libros.</h2>
+		{% else %}
+			<h2>Se encontraron {{ l }} libros con ese criterio de búsqueda:</h2>
+		{% endif %}
+		<form action="{{ url_for('books') }}" method="post">
+			<div>Puede buscar libros específicos por título, autor o código ISBN:</div>
+				<input type="text" name="seek">
+			<button>Buscar</button>
+		</form>
+	<table>
+		<tr>
+			<th>ISBN</th>
+			<th>Título</th>
+			<th>Autor</th>
+			<th>Año</th>
+		</tr>
+		{% for book in booklist %}
+		<tr>
+			<td>{{ book.isbn }}</td>
+			<td><a href="{{ url_for('bookdata', book_isbn=book.isbn) }}">{{ book.title }}</a></td>
+			<td>{{ book.author }}</td>
+			<td>{{ book.year }}</td>
+		</tr>
+		{% endfor %}
+	</table>
+	{% else %}
+		<h2>No se encontraron libros con ese criterio de búsqueda.</h2>
+	{% endif %}
+{% endblock %}
